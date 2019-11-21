@@ -1,0 +1,11 @@
+eccube.event.app.request:
+    - [onAppRequest, NORMAL]
+front.cart.up.initialize:
+    - [onFrontCartUpInitialize, NORMAL]
+
+front.shopping.index.initialize:
+    - [onFrontShoppingIndexInitialize, NORMAL]
+front.shopping.confirm.initialize:
+    - [onFrontShoppingConfirmInitialize, NORMAL]
+Shopping/index.twig:
+    - [onRenderShoppingIndex, NORMAL]

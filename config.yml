@@ -1,0 +1,8 @@
+name: ApplePayStripePlugin
+code: ApplePayStripePlugin
+version: 0.1.0
+event: ApplePayStripePluginEvent
+service:
+    - ApplePayStripePluginServiceProvider
+orm.path:
+    - /Resource/doctrine

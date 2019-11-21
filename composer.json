@@ -1,0 +1,12 @@
+{
+    "name": "binaryquaver/apple-pay-stripe-plugin",
+    "authors": [
+        {
+            "name": "kolnato owelek",
+            "email": "kolnato.owelek@gmail.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^7.13"
+    }
+}

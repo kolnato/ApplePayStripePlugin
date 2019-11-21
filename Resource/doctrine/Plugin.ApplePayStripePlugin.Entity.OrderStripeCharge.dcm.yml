@@ -1,0 +1,19 @@
+Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge:
+    type: entity
+    table: plg_applepaystripeplugin_orderstripecharge
+    repositoryClass: Plugin\ApplePayStripePlugin\Repository\OrderStripeCharge
+    indexes:
+    plg_applepaystripeplugin_orderstripecharge_stripechargeid:
+        columns:
+            - stripe_charge_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            id: true
+            column: order_id
+    fields:
+        stripe_charge_id:
+            type: text
+            nullable: false
+lifecycleCallbacks: {}
