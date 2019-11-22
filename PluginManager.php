@@ -65,6 +65,7 @@ class PluginManager extends AbstractPluginManager
             $app['orm.em']->flush($payment);
         }
 
+	/*
         $deliveries = $app['eccube.repository.delivery']->findAll();
         foreach ($deliveries as $delivery) {
             $paymentOption = $app['eccube.repository.payment_option']->findOneBy(['Payment' => $payment, 'Delivery' => $delivery]);
@@ -77,6 +78,7 @@ class PluginManager extends AbstractPluginManager
                 $app['orm.em']->persist($paymentOption);
             }
         }
+	 */
 
         $app['orm.em']->flush();
     }
