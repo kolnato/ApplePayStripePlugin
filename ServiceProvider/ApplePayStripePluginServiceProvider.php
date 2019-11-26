@@ -42,7 +42,7 @@ class ApplePayStripePluginServiceProvider implements ServiceProviderInterface
             return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\ApplePayStripePluginConfig');
         });
         $app['apple_pay_stripe_plugin.repository.order_stripe_charge'] = $app->share(function () use ($app) {
-            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\OrderStripeRepository');
+            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge');
         });
 
         $app['config'] = $app->share($app->extend('config', function ($config) {
