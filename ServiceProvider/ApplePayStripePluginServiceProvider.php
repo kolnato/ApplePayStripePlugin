@@ -24,6 +24,14 @@ class ApplePayStripePluginServiceProvider implements ServiceProviderInterface
 
     public function register(BaseApplication $app)
     {
+        // Repository
+        $app['apple_pay_stripe_plugin.repository.apple_pay_stripe_plugin_config'] = $app->share(function () use ($app) {
+            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\ApplePayStripePluginConfig');
+        });
+        $app['apple_pay_stripe_plugin.repository.order_stripe_charge'] = $app->share(function () use ($app) {
+            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge');
+        });
+
         // プラグイン用設定画面
         $app->match('/' . $app["config"]["admin_route"]  . '/plugin/apple_pay_stripe_plugin/config', '\Plugin\ApplePayStripePlugin\Controller\AdminController::config')->bind('apple_pay_stripe_plugin_config');
         $app->match('/' . $app["config"]["admin_route"]  . '/plugin/apple_pay_stripe_plugin/config_update', '\Plugin\ApplePayStripePlugin\Controller\AdminController::config_update')->bind('apple_pay_stripe_plugin_config_update');
@@ -36,14 +44,6 @@ class ApplePayStripePluginServiceProvider implements ServiceProviderInterface
             $types[] = new ConfigType();
             return $types;
         }));
-
-        // Repository
-        $app['apple_pay_stripe_plugin.repository.apple_pay_stripe_plugin_config'] = $app->share(function () use ($app) {
-            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\ApplePayStripePluginConfig');
-        });
-        $app['apple_pay_stripe_plugin.repository.order_stripe_charge'] = $app->share(function () use ($app) {
-            return $app['orm.em']->getRepository('Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge');
-        });
 
         $app['config'] = $app->share($app->extend('config', function ($config) {
             $head = array_slice($config['nav'], 0, 4);

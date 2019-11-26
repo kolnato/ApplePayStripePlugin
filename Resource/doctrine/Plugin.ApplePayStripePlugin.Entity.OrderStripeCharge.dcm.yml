@@ -1,7 +1,7 @@
 Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge:
     type: entity
     table: plg_applepaystripeplugin_orderstripecharge
-    repositoryClass: Plugin\ApplePayStripePlugin\Repository\OrderStripeCharge
+    repositoryClass: Plugin\ApplePayStripePlugin\Repository\OrderStripeChargeRepository
     indexes:
     plg_applepaystripeplugin_orderstripecharge_stripechargeid:
         columns:

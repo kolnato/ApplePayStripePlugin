@@ -16,8 +16,9 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use Eccube\Application;
+use Eccube\Common\Constant;
 
-class Version20191121020035 extends AbstractMigration
+class Version20191126135710 extends AbstractMigration
 {
     protected $entities = array(
         'Plugin\ApplePayStripePlugin\Entity\OrderStripeCharge'
@@ -29,11 +30,7 @@ class Version20191121020035 extends AbstractMigration
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
-
-        $app = Application::getInstance();
-        $meta = $this->getMetadata($app['orm.em']);
-        $tool = new SchemaTool($app['orm.em']);
-        $tool->createSchema($meta);
+        $this->createTablePlgApplepaystripepluginOrderstripecharge($schema);
     }
 
     /**
@@ -41,27 +38,7 @@ class Version20191121020035 extends AbstractMigration
      */
     public function down(Schema $schema)
     {
-        // this down() migration is auto-generated, please modify it to your needs
-
-        $app = Application::getInstance();
-        $meta = $this->getMetadata($app['orm.em']);
-
-        $tool = new SchemaTool($app['orm.em']);
-        $schemaFromMetadata = $tool->getSchemaFromMetadata($meta);
-
-        // テーブル削除
-        foreach ($schemaFromMetadata->getTables() as $table) {
-            if ($schema->hasTable($table->getName())) {
-                $schema->dropTable($table->getName());
-            }
-        }
-
-        // シーケンス削除
-        foreach ($schemaFromMetadata->getSequences() as $sequence) {
-            if ($schema->hasSequence($sequence->getName())) {
-                $schema->dropSequence($sequence->getName());
-            }
-        }
+        $schema->dropTable('plg_applepaystripeplugin_orderstripecharge');
     }
 
     /**
@@ -78,4 +55,20 @@ class Version20191121020035 extends AbstractMigration
 
         return $meta;
     }
+
+
+    /**
+     * @param Schema $schema
+     */
+    public function createTablePlgApplepaystripepluginOrderstripecharge(Schema $schema)
+    {
+        $table = $schema->createTable('plg_applepaystripeplugin_orderstripecharge');
+        $table->addColumn('order_id', 'integer', array(
+            'notnull' => false,
+        ));
+        $table->addColumn('stripe_charge_id', 'text', array(
+            'notnull' => false,
+        ));
+    }
+
 }
