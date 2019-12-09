@@ -17,7 +17,7 @@ https://developer.apple.com/documentation/apple_pay_on_the_web
 * Apple Pay | Stripe payments
 https://stripe.com/docs/apple-pay
 
-またインストールに関しての情報は INSTALL.md にまとめていますので、そちらで確認してください。
+またインストールに関しての情報は INSTALL.md にまとめています。そちらも合わせてご参照ください。
 
 ## 処理の流れ
 
@@ -159,10 +159,10 @@ $(function() {
 このプラグインAPIの応答がOKならばECCUBEの決済処理全体がOKとなる。
 
 
-##＃ ECCUBEの注文情報とStripeトークンを紐づける
+### ECCUBEの注文情報とStripeトークンを紐づける
 
-前項で生成されたStripeトークンを受けて、今回の注文情報をECCUBEとStripeの間で結びつける役割を持つのがこのプラグインAPIコントローラです。
-プラグイン内のAPIコントローラとして実装されているので、前項ではこれをJS fetch()を用いて呼び出しました。
+前項で生成されたStripeトークンを受けて、今回の注文情報をECCUBEとStripeの間で結びつける役割を持つのがこのプラグインAPIコントローラである。
+プラグイン内のAPIコントローラとして実装されているので、前項ではこれをJS fetch()を用いて呼び出した。
 
 ```
 class ApplePayStripePluginController
@@ -196,6 +196,6 @@ class ApplePayStripePluginController
 }
 ```
 
-`\Stripe\Charge::create()`というAPIを用いてStripeに通知し、この課金と決済処理を最終的に完了させます。
+`\Stripe\Charge::create()`というAPIを用いてStripeに通知し、この課金と決済処理を最終的に完了させる。
 
-この時ブラウザから金額やECCUBE注文IDなども付与し、StripeとECCUBEの間で情報の紐付けが行われているのが分かります。
+この時ブラウザから金額やECCUBE注文IDなども付与し、StripeとECCUBEの間で情報の紐付けが行われているのが確認できる。
